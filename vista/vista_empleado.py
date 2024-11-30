@@ -1,5 +1,5 @@
 from modelo.empleado import Empleado
-from controlador.controlador_empleado import agregar_empleado
+from controlador.controlador_empleado import agregar_empleado, encontrarEmpleado, actualizarEmpleado
 
 def menuEmpleado():
   print('Menu Empleado')
@@ -23,9 +23,64 @@ def instanciarEmpleado():
   empleado = Empleado(nombre, direccion, telefono, email, fecha_inicio_contrato, salario)
   agregar_empleado(empleado)
 
+def buscarEmpleado():
+  nombre = input('Ingrese el nombre del empleado: ')
+  empleado = encontrarEmpleado(nombre)
+  return empleado
+
+def editarEmpleado():
+  empleado = buscarEmpleado()
+
+  if empleado is not None:
+    print('Menu editar empleado')
+    print('1.- Nombre')  
+    print('2.- Dirección')  
+    print('3.- Teléfono')  
+    print('4.- Correo eléctronico')  
+    print('5.- Salario') 
+    print('0.- Salir')
+    op = int(input('Seleccione una opción: '))
+    if op == 1:
+      print(f'El nombre actual es: {empleado.getNombre()}')
+      nombre = input('Ingrese el nuevo nombre: ')
+      empleado.setNombre(nombre)
+    elif op == 2:
+      print(f'La dirección actual es: {empleado.getDireccion()}')
+      direccion = input('Ingrese la nueva dirección: ')
+      empleado.setDireccion(direccion)
+    elif op == 3:
+      print(f'El teléfono actual es: {empleado.getTelefono()}')
+      telefono = input('Ingrese el nuevo teléfono: ')
+      empleado.setTelefono(telefono)
+    elif op == 4:
+      print(f'El correo eléctronico actual es: {empleado.getEmail()}')
+      email = input('Ingrese el nuevo correo eléctronico: ')
+      empleado.setEmail(email)
+    elif op == 5:
+      print(f'El salario actual es: {empleado.getSalario()}')
+      salario = int(input('Ingrese el nuevo salario: '))
+      empleado.setSalario(salario)
+    else:
+      print('No se realizaron cambios')
+    actualizarEmpleado(empleado)
+  else:
+    print('Empleado no encontrado')
+
+def imprimirEmpleado():
+  empleado = buscarEmpleado()
+  if empleado is not None:
+    print(empleado)
+  else:
+    print('Empleado no encontrado')
+
 def mainEmpleado():
   op = -1
   while op != 0:
     op = menuEmpleado()
     if op == 1:
       instanciarEmpleado()
+    elif op == 2:
+      editarEmpleado()
+    elif op == 3:
+      imprimirEmpleado()
+    

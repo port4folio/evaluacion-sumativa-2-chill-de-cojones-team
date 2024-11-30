@@ -1,5 +1,6 @@
 class Empleado:
   def __init__(self, nombre, direccion, telefono, email, fecha_inicio_contrato, salario):
+    self.__id = 0
     self.__nombre = nombre
     self.__direccion = direccion
     self.__telefono = telefono
@@ -8,6 +9,9 @@ class Empleado:
     self.__salario = salario
 
   # Obtener atributos
+  def getId(self):
+    return self.__id
+
   def getNombre(self):
     return self.__nombre
   
@@ -27,8 +31,14 @@ class Empleado:
     return self.__salario
   
   # Modificar atributos
+  def setId(self, id):
+    self.__id = id
+
   def setNombre(self, nombre):
     self.__nombre = nombre
+
+  def setDireccion(self, direccion):
+    self.__direccion = direccion
 
   def setTelefono(self, telefono):
     self.__telefono = telefono
@@ -43,4 +53,4 @@ class Empleado:
     self.__salario = salario
 
   def __str__(self):
-    return f'Nombre: {self.__nombre}\nNúmero de teléfono: {self.__telefono}\nCorreo electrónico: {self.__email}\nFecha de inicio de contrato: {self.__fecha_inicio_contrato}\nSalario: {self.__salario}'
+    return f'Nombre: {self.__nombre}\nDirección: {self.__direccion}\nNúmero de teléfono: {self.__telefono}\nCorreo electrónico: {self.__email}\nFecha de inicio de contrato: {self.__fecha_inicio_contrato}\nSalario: ${self.__salario}'
