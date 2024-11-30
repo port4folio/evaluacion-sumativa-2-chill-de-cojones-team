@@ -1,5 +1,5 @@
 from modelo.empleado import Empleado
-from controlador.controlador_empleado import agregar_empleado, encontrarEmpleado, actualizarEmpleado
+from controlador.controlador_empleado import agregar_empleado, encontrarEmpleado, actualizarEmpleado, obtenerEmpleados, deleteEmpleado
 
 def menuEmpleado():
   print('Menu Empleado')
@@ -73,6 +73,30 @@ def imprimirEmpleado():
   else:
     print('Empleado no encontrado')
 
+def imprimirEmpleados():
+  empleados = obtenerEmpleados()
+  if len(empleados) > 0:
+    for empleado in empleados:
+      print(empleado)
+  else:
+    print('No hay empleados ingresados')
+
+def eliminarEmpleado():
+  empleado = buscarEmpleado()
+  if empleado is not None:
+    print(f'Eliminará  el empleado {empleado.getNombre()}')
+    print('¿Estás seguro?')
+    print('1.- Si')
+    print('2.- No')
+    print('0.- Salir')
+    resp = int(input('Seleccione una opción: '))
+    if resp == 1:
+      deleteEmpleado(empleado)
+    else:
+      print('Empleado no eliminado')
+  else:
+    print('Empleado no encontrado')  
+    
 def mainEmpleado():
   op = -1
   while op != 0:
@@ -83,4 +107,9 @@ def mainEmpleado():
       editarEmpleado()
     elif op == 3:
       imprimirEmpleado()
+    elif op == 4:
+      imprimirEmpleados()
+    elif op == 5:
+      eliminarEmpleado()
+    
     
