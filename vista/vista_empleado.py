@@ -1,5 +1,5 @@
 from modelo.empleado import Empleado
-from controlador.controlador_empleado import agregar_empleado, encontrarEmpleado, actualizarEmpleado, obtenerEmpleados, deleteEmpleado
+from controlador.controlador_empleado import registrarEmpleado, encontrarEmpleado, actualizarEmpleado, obtenerEmpleados, deleteEmpleado
 
 def menuEmpleado():
   print('Menu Empleado')
@@ -12,7 +12,7 @@ def menuEmpleado():
   op = int(input("Ingrese una opción: "))
   return op
 
-def instanciarEmpleado():
+def agregarEmpleado():
   print('Ingrese los datos del empleado')
   nombre = input('Ingrese el nombre: ')
   direccion = input('Ingrese la dirección: ')
@@ -21,7 +21,7 @@ def instanciarEmpleado():
   fecha_inicio_contrato = input('Ingrese la fecha de inicio de contrato: ')
   salario = int(input('Ingrese el salario: '))
   empleado = Empleado(nombre, direccion, telefono, email, fecha_inicio_contrato, salario)
-  agregar_empleado(empleado)
+  registrarEmpleado(empleado)
 
 def buscarEmpleado():
   nombre = input('Ingrese el nombre del empleado: ')
@@ -102,7 +102,7 @@ def mainEmpleado():
   while op != 0:
     op = menuEmpleado()
     if op == 1:
-      instanciarEmpleado()
+      agregarEmpleado()
     elif op == 2:
       editarEmpleado()
     elif op == 3:

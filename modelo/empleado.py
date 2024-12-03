@@ -7,6 +7,7 @@ class Empleado:
     self.__email = email
     self.__fecha_inicio_contrato = fecha_inicio_contrato
     self.__salario = salario
+    self.__departamento = ''
 
   # Obtener atributos
   def getId(self):
@@ -30,6 +31,9 @@ class Empleado:
   def getSalario(self):
     return self.__salario
   
+  def getDepartamento(self):
+    return self.__departamento
+  
   # Modificar atributos
   def setId(self, id):
     self.__id = id
@@ -51,6 +55,9 @@ class Empleado:
 
   def setSalario(self, salario):
     self.__salario = salario
+
+  def setDepartamento(self, departamento):
+    self.__departamento = departamento
 
   def __str__(self):
     return f'Nombre: {self.__nombre}\nDirección: {self.__direccion}\nNúmero de teléfono: {self.__telefono}\nCorreo electrónico: {self.__email}\nFecha de inicio de contrato: {self.__fecha_inicio_contrato}\nSalario: ${self.__salario}'

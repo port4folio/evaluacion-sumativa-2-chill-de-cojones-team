@@ -2,7 +2,7 @@ from modelo.db import conectar
 from datetime import datetime
 from modelo.empleado import Empleado
 
-def agregar_empleado(empleado):
+def registrarEmpleado(empleado):
   conn = conectar()
   try:
     if conn is not None:
