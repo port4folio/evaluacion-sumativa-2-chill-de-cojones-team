@@ -1,5 +1,7 @@
 from modelo.empleado import Empleado
 from controlador.controlador_empleado import registrarEmpleado, encontrarEmpleado, actualizarEmpleado, obtenerEmpleados, deleteEmpleado
+from controlador.controlador_departamento import obtenerDepartamentos
+from vista.vista_departamento import buscarDepartamento
 
 def menuEmpleado():
   print('Menu Empleado')
@@ -20,8 +22,12 @@ def agregarEmpleado():
   email = input('Ingrese el correo electrónico: ')
   fecha_inicio_contrato = input('Ingrese la fecha de inicio de contrato: ')
   salario = int(input('Ingrese el salario: '))
-  empleado = Empleado(nombre, direccion, telefono, email, fecha_inicio_contrato, salario)
-  registrarEmpleado(empleado)
+  departamento = buscarDepartamento()
+  if departamento is not None:
+    empleado = Empleado(nombre, direccion, telefono, email, fecha_inicio_contrato, salario, departamento.getId())
+    registrarEmpleado(empleado)
+  else:
+      print('Departamento no encontrado')
 
 def buscarEmpleado():
   nombre = input('Ingrese el nombre del empleado: ')
@@ -38,6 +44,7 @@ def editarEmpleado():
     print('3.- Teléfono')  
     print('4.- Correo eléctronico')  
     print('5.- Salario') 
+    print('6.- Reasignar departamento')
     print('0.- Salir')
     op = int(input('Seleccione una opción: '))
     if op == 1:
@@ -60,6 +67,19 @@ def editarEmpleado():
       print(f'El salario actual es: {empleado.getSalario()}')
       salario = int(input('Ingrese el nuevo salario: '))
       empleado.setSalario(salario)
+    elif op == 6:
+      departamentos = obtenerDepartamentos()
+      for depto in departamentos:
+        if depto.getId() == empleado.getDepartamento():
+          departamento = depto.getNombre()
+      print(f'El departamento actual es: {departamento}')
+      buscar_departamento = buscarDepartamento()
+      if buscar_departamento is not None:
+        nuevo_depto = buscar_departamento.getId()
+        empleado.setDepartamento(int(nuevo_depto))
+        print('Empleado actualizado')
+      else:
+        print('Departamento no encontrado')
     else:
       print('No se realizaron cambios')
     actualizarEmpleado(empleado)
@@ -95,7 +115,7 @@ def eliminarEmpleado():
     else:
       print('Empleado no eliminado')
   else:
-    print('Empleado no encontrado')  
+    print('Empleado no encontrado')   
     
 def mainEmpleado():
   op = -1
@@ -111,5 +131,4 @@ def mainEmpleado():
       imprimirEmpleados()
     elif op == 5:
       eliminarEmpleado()
-    
     

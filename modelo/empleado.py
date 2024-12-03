@@ -1,5 +1,5 @@
 class Empleado:
-  def __init__(self, nombre, direccion, telefono, email, fecha_inicio_contrato, salario):
+  def __init__(self, nombre, direccion, telefono, email, fecha_inicio_contrato, salario, departamento):
     self.__id = 0
     self.__nombre = nombre
     self.__direccion = direccion
@@ -7,7 +7,7 @@ class Empleado:
     self.__email = email
     self.__fecha_inicio_contrato = fecha_inicio_contrato
     self.__salario = salario
-    self.__departamento = ''
+    self.__departamento = departamento
 
   # Obtener atributos
   def getId(self):
