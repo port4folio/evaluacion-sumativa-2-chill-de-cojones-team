@@ -21,7 +21,7 @@ while True:
     mainDepartamento()
   elif op == 3:
     mainProyecto()
-  elif op == 3:
+  elif op == 4:
     mainEmpleadoProyecto()
   elif op == 0:
     print('Gracias')
