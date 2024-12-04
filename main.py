@@ -1,16 +1,10 @@
-from vista.vista_empleado import mainEmpleado
-from vista.vista_departamento import mainDepartamento
-from vista.vista_proyecto import mainProyecto
-from vista.vista_empleado_proyecto import mainEmpleadoProyecto
-from vista.vista_registro_tiempo import mainRegistrarTiempo
+from controlador.controlador_autenticacion import autenticar
+from vista.vista_usuario import mainUsuario, registrarUsuario
 
 def menu():
   print('Menu General')
-  print("1.- Empleado")
-  print("2.- Departamento")
-  print("3.- Proyecto")
-  print("4.- Empleado a Proyecto")
-  print("5.- Registrar Tiempo")
+  print("1.- Login")
+  print("2.- Registrarse")
   print("0.- Salir")
   op = int(input("Seleccione una opción: "))
   return op
@@ -18,15 +12,14 @@ def menu():
 while True:
   op = menu()
   if op == 1:
-    mainEmpleado()
+    print("Inicio sesión")
+    email=input("Ingrese correo: ")
+    password=input("Ingrese contraseña: ")
+    usuario = autenticar(email, password)
+    if usuario is not None:
+      mainUsuario(usuario)
   elif op == 2:
-    mainDepartamento()
-  elif op == 3:
-    mainProyecto()
-  elif op == 4:
-    mainEmpleadoProyecto()
-  elif op == 5:
-    mainRegistrarTiempo()
+    registrarUsuario()
   elif op == 0:
     print('Gracias')
     break

@@ -20,11 +20,12 @@ def agregarEmpleado():
   direccion = input('Ingrese la dirección: ')
   telefono = input('Ingrese el teléfono: ')
   email = input('Ingrese el correo electrónico: ')
+  rol = input('Ingrese el rol: ')
   fecha_inicio_contrato = input('Ingrese la fecha de inicio de contrato: ')
   salario = int(input('Ingrese el salario: '))
   departamento = buscarDepartamento()
   if departamento is not None:
-    empleado = Empleado(nombre, direccion, telefono, email, fecha_inicio_contrato, salario, departamento.getId())
+    empleado = Empleado(nombre, direccion, telefono, email, rol, fecha_inicio_contrato, salario, departamento)
     registrarEmpleado(empleado)
   else:
       print('Departamento no encontrado')
@@ -42,7 +43,7 @@ def editarEmpleado():
     print('1.- Nombre')  
     print('2.- Dirección')  
     print('3.- Teléfono')  
-    print('4.- Correo eléctronico')  
+    print('4.- Rol')
     print('5.- Salario') 
     print('6.- Reasignar departamento')
     print('0.- Salir')
@@ -60,9 +61,9 @@ def editarEmpleado():
       telefono = input('Ingrese el nuevo teléfono: ')
       empleado.setTelefono(telefono)
     elif op == 4:
-      print(f'El correo eléctronico actual es: {empleado.getEmail()}')
-      email = input('Ingrese el nuevo correo eléctronico: ')
-      empleado.setEmail(email)
+      print(f'El rol actual es: {empleado.getRol()}')
+      rol = input('Ingrese el nuevo rol: ')
+      empleado.setRol(rol)
     elif op == 5:
       print(f'El salario actual es: {empleado.getSalario()}')
       salario = int(input('Ingrese el nuevo salario: '))
@@ -75,8 +76,7 @@ def editarEmpleado():
       print(f'El departamento actual es: {departamento}')
       buscar_departamento = buscarDepartamento()
       if buscar_departamento is not None:
-        nuevo_depto = buscar_departamento.getId()
-        empleado.setDepartamento(int(nuevo_depto))
+        empleado.setDepartamento(buscar_departamento)
         print('Empleado actualizado')
       else:
         print('Departamento no encontrado')

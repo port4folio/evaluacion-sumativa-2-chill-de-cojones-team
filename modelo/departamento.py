@@ -23,4 +23,4 @@ class Departamento:
     self.__gerente = gerente
 
   def __str__(self):
-    return f'Id: {self.__id}\nNombre: {self.__nombre}\nGerente: {self.__gerente}'
+    return f'Nombre: {self.__nombre}\nGerente: {self.__gerente}'
