@@ -52,14 +52,3 @@ def rolUsuario(usuario):
   finally:
     if conn:
       conn.close()
-      
-"""         return proyectos
-      else:
-        return None
-    else:
-      return None
-  except Exception as e:
-    print(f'Error al conectar {e}')
-  finally:
-    cursor.close()
-    conn.close() """
