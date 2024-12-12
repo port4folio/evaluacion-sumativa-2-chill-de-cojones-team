@@ -1,10 +1,12 @@
 from controlador.controlador_autenticacion import autenticar
 from vista.vista_usuario import mainUsuario, registrarUsuario
+from vista.vista_indicadores import main_indicadores
 
 def menu():
   print('Menu General')
   print("1.- Login")
   print("2.- Registrarse")
+  print("3.- Indicadores")
   print("0.- Salir")
   op = int(input("Seleccione una opción: "))
   return op
@@ -20,6 +22,8 @@ while True:
       mainUsuario(usuario)
   elif op == 2:
     registrarUsuario()
+  elif op == 3:
+    main_indicadores()
   elif op == 0:
     print('Gracias')
     break
