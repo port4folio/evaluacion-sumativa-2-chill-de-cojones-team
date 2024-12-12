@@ -8,8 +8,7 @@ def menuEmpleado():
   print("1.- Agregar")
   print("2.- Editar")
   print("3.- Imprimir una")
-  print("4.- Imprimir todas")
-  print("5.- Eliminar")
+  print("4.- Eliminar")
   print("0.- Salir")
   op = int(input("Ingrese una opción: "))
   return op
@@ -93,14 +92,6 @@ def imprimirEmpleado():
   else:
     print('Empleado no encontrado')
 
-def imprimirEmpleados():
-  empleados = obtenerEmpleados()
-  if len(empleados) > 0:
-    for empleado in empleados:
-      print(empleado)
-  else:
-    print('No hay empleados ingresados')
-
 def eliminarEmpleado():
   empleado = buscarEmpleado()
   if empleado is not None:
@@ -128,7 +119,5 @@ def mainEmpleado():
     elif op == 3:
       imprimirEmpleado()
     elif op == 4:
-      imprimirEmpleados()
-    elif op == 5:
       eliminarEmpleado()
     

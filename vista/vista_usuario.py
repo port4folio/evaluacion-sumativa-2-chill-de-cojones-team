@@ -3,6 +3,7 @@ from vista.vista_departamento import mainDepartamento
 from vista.vista_proyecto import mainProyecto
 from vista.vista_empleado_proyecto import mainEmpleadoProyecto
 from vista.vista_registro_tiempo import mainRegistrarTiempo
+from vista.vista_informe import mainInforme
 from controlador.controlador_empleado import obtenerEmpleados
 from controlador.controlador_usuario import agregar_usuario, rolUsuario
 from modelo.usuario import Usuario
@@ -21,6 +22,7 @@ def menuUsuario(usuario):
       print("1.- Departamento")
       print("2.- Proyecto")
       print("3.- Empleado a Proyecto")
+      print("4.- Generar Informe")
       print("0.- Cerrar Sesión")
     else:
       print("No tiene permisos para acceder a este menú.")
@@ -58,11 +60,13 @@ def mainUsuario(usuario):
         mainRegistrarTiempo()
       elif rolUsuario(usuario)[0] == 'admin':
         mainDepartamento()
-    elif op == 2 and rolUsuario(usuario)[0] == 'admin':
+    elif op == 1 and rolUsuario(usuario)[0] == 'admin':
       mainDepartamento()
-    elif op == 3 and rolUsuario(usuario)[0] == 'admin':
+    elif op == 2 and rolUsuario(usuario)[0] == 'admin':
       mainProyecto()
-    elif op == 4 and rolUsuario(usuario)[0] == 'admin':
+    elif op == 3 and rolUsuario(usuario)[0] == 'admin':
       mainEmpleadoProyecto()
-    elif op == 5 and rolUsuario(usuario)[0] == 'empleado':
+    elif op == 4 and rolUsuario(usuario)[0] == 'admin':
+      mainInforme()
+    elif op == 1 and rolUsuario(usuario)[0] == 'empleado':
       mainRegistrarTiempo()

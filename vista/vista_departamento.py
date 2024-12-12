@@ -6,8 +6,7 @@ def menuDepartamento():
   print("1.- Agregar")
   print("2.- Editar")
   print("3.- Imprimir una")
-  print("4.- Imprimir todas")
-  print("5.- Eliminar")
+  print("4.- Eliminar")
   print("0.- Salir")
   op = int(input("Ingrese una opción: "))
   return op
@@ -53,14 +52,6 @@ def imprimirDepartamento():
   else:
     print('Departamento no encontrado')
 
-def imprimirDepartamentos():
-  departamentos = obtenerDepartamentos()
-  if len(departamentos) > 0:
-    for departamento in departamentos:
-      print(departamento)
-  else:
-    print('No hay departamentos ingresados')
-
 def eliminarDepartamento():
   departamento = buscarDepartamento()
   if departamento is not None:
@@ -88,6 +79,4 @@ def mainDepartamento():
     elif op == 3:
       imprimirDepartamento()
     elif op == 4:
-      imprimirDepartamentos()
-    elif op == 5:
       eliminarDepartamento()

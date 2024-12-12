@@ -6,8 +6,7 @@ def menuProyecto():
   print("1.- Agregar")
   print("2.- Editar")
   print("3.- Imprimir una")
-  print("4.- Imprimir todas")
-  print("5.- Eliminar")
+  print("4.- Eliminar")
   print("0.- Salir")
   op = int(input("Ingrese una opción: "))
   return op
@@ -65,14 +64,6 @@ def imprimirProyecto():
   else:
     print('Proyecto no encontrado')
 
-def imprimirProyectos():
-  proyectos = obtenerProyectos()
-  if len(proyectos) > 0:
-    for proyecto in proyectos:
-      print(proyecto)
-  else:
-    print('No hay proyectos ingresados')
-
 def eliminarProyecto():
   proyecto = buscarProyecto()
   if proyecto is not None:
@@ -100,6 +91,4 @@ def mainProyecto():
     elif op == 3:
       imprimirProyecto()
     elif op == 4:
-      imprimirProyectos()
-    elif op == 5:
       eliminarProyecto()
